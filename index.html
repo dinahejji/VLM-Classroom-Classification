@@ -44,12 +44,26 @@
       font-size: 1.5rem;
       color: #111827;
     }
+    ul {
+      margin-top: 10px;
+      padding-left: 20px;
+    }
+    pre {
+      background-color: #f3f4f6;
+      padding: 10px;
+      border-radius: 8px;
+      overflow-x: auto;
+    }
     a {
       color: #2563eb;
       text-decoration: none;
     }
     a:hover {
       text-decoration: underline;
+    }
+    iframe {
+      border: none;
+      border-radius: 10px;
     }
     footer {
       text-align: center;
@@ -104,6 +118,15 @@ You are a classroom observer. Based on the transcript and image provided, classi
 ### Transcript:
 "Okay, so what does this graph represent? It's the velocity-time graph for motion..."
     </pre>
+
+    <h2>🎬 Demo</h2>
+    <p>Watch a demo of the VLM classifying a real classroom scene using a video + transcript input:</p>
+    <div style="margin-top: 20px; text-align: center;">
+      <iframe 
+        src="https://drive.google.com/file/d/1vUNNUKvRxaSNCshPV-9TzRX2sJe5ePjV/preview" 
+        width="100%" height="400" allow="autoplay" allowfullscreen>
+      </iframe>
+    </div>
 
     <h2>📌 Status</h2>
     <p>🔄 Currently fine-tuning the model and testing on video frames and real classroom transcripts.</p>
