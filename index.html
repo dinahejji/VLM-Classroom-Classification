@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="VLM Classroom Classification - A Vision-Language Model to classify classroom settings by type and topic." />
+  <title>VLM Classroom Classification</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet"/>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', sans-serif;
+    }
+    body {
+      background-color: #f9fafb;
+      color: #1f2937;
+      line-height: 1.6;
+      padding: 40px;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+    header p {
+      font-size: 1.1rem;
+      color: #4b5563;
+    }
+    section {
+      max-width: 800px;
+      margin: auto;
+      padding: 20px;
+      background-color: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    h2 {
+      margin-top: 30px;
+      font-size: 1.5rem;
+      color: #111827;
+    }
+    a {
+      color: #2563eb;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      color: #9ca3af;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>VLM Classroom Classification</h1>
+    <p>Vision-Language Model for Classroom Type and Topic Prediction</p>
+  </header>
+
+  <section>
+    <h2>🧠 About the Project</h2>
+    <p>
+      This project fine-tunes a Vision-Language Model (VLM) to classify classroom scenes
+      based on images and transcripts. It supports multiple types such as:
+      <strong>Normal Lecture, Flipped Classroom, Lab Lecture, Active Learning, Hybrid Sessions, and Exams</strong>.
+      It also infers academic topics like Physics, Chemistry, AI, or Sociology from student-teacher interaction.
+    </p>
+
+    <h2>📁 Repository</h2>
+    <p>
+      GitHub: <a href="https://github.com/dinahejji/VLM-Classroom-Classification" target="_blank">
+        github.com/dinahejji/VLM-Classroom-Classification</a>
+    </p>
+
+    <h2>🚀 Features</h2>
+    <ul>
+      <li>Supports image + transcript multimodal classification</li>
+      <li>Trained using <code>Unsloth</code> with LoRA adapters</li>
+      <li>Custom dataset of classroom scenes and academic dialogues</li>
+      <li>Compatible with Hugging Face Transformers & PEFT</li>
+    </ul>
+
+    <h2>🔧 Tech Stack</h2>
+    <ul>
+      <li>Python, PyTorch, Transformers</li>
+      <li>BLIP / LLaVA / Qwen2-VL backbone support</li>
+      <li>Google Colab for fine-tuning & inference</li>
+    </ul>
+
+    <h2>📷 Sample Prompt</h2>
+    <pre>
+### Instruction:
+You are a classroom observer. Based on the transcript and image provided, classify:
+1. Classroom type (normal lecture, flipped classroom, etc.)
+2. Academic topic.
+
+### Transcript:
+"Okay, so what does this graph represent? It's the velocity-time graph for motion..."
+    </pre>
+
+    <h2>📌 Status</h2>
+    <p>🔄 Currently fine-tuning the model and testing on video frames and real classroom transcripts.</p>
+
+    <h2>💡 Future Plans</h2>
+    <ul>
+      <li>Add a live demo with Gradio or Streamlit</li>
+      <li>Improve classification accuracy across noisy audio</li>
+      <li>Expand dataset with multimodal annotations</li>
+    </ul>
+  </section>
+
+  <footer>
+    <p>© 2025 Dina Hejji · <a href="https://github.com/dinahejji" target="_blank">GitHub Profile</a></p>
+  </footer>
+</body>
+</html>
