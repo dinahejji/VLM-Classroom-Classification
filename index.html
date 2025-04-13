@@ -121,16 +121,17 @@
       <li>Compatible with Hugging Face Transformers & PEFT</li>
     </ul>
 
-    <h2>Sample Prompt</h2>
-    <pre>
+<h2>Sample Prompt</h2>
+<pre>
 ### Instruction:
-You are a classroom observer. Based on the transcript and image provided, classify:
-1. Classroom type (normal lecture, flipped classroom, etc.)
-2. Academic topic.
+You are a classroom observer. Based on the image and the following transcript (automatically generated from classroom audio), classify:
+1. The type of classroom activity (e.g., normal lecture, flipped classroom, lab session, exam, etc.)
+2. The academic topic being discussed.
 
-### Transcript:
+### Transcript (converted from audio):
 "Okay, so what does this graph represent? It's the velocity-time graph for motion..."
-    </pre>
+</pre>
+
 
     <h2>Demo</h2>
     <p>Watch a demo of the VLM classifying a real classroom scene using a video + transcript input:</p>
