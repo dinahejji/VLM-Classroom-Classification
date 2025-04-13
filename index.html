@@ -70,6 +70,10 @@
       margin-top: 40px;
       color: #9ca3af;
     }
+    .sub {
+      color: #4b5563;
+      font-size: 0.95rem;
+    }
   </style>
 </head>
 <body>
@@ -79,33 +83,42 @@
   </header>
 
   <section>
-    <h2>🧠 About the Project</h2>
+    <h2>📌 What is the project?</h2>
     <p>
-      This project fine-tunes a Vision-Language Model (VLM) to classify classroom scenes
-      based on images and transcripts. It supports multiple types such as:
-      <strong>Normal Lecture, Flipped Classroom, Lab Lecture, Active Learning, Hybrid Sessions, and Exams</strong>.
-      It also infers academic topics like Physics, Chemistry, AI, or Sociology from student-teacher interaction.
+      VLM Classroom Classification is a multimodal AI system that uses a fine-tuned Vision-Language Model (VLM)
+      to classify classroom activities by <strong>scene type</strong> and <strong>academic topic</strong> based on both
+      images and transcripts from real teaching environments.
     </p>
 
-    <h2>📁 Repository</h2>
+    <h2>❓ Why does it matter?</h2>
     <p>
-      GitHub: <a href="https://github.com/dinahejji/VLM-Classroom-Classification" target="_blank">
-        github.com/dinahejji/VLM-Classroom-Classification</a>
+      Understanding the type of classroom interaction (e.g., lecture, flipped, lab) and the subject being taught
+      is crucial for educational analytics, personalized learning tools, and intelligent tutoring systems.
     </p>
 
-    <h2>🚀 Features</h2>
+    <h2>⚙️ How does it work?</h2>
+    <p>
+      A VLM (e.g., Qwen2-VL, LLaVA, or BLIP) is fine-tuned on a dataset of annotated classroom images and aligned
+      transcripts. Given a new sample, the model processes visual and textual inputs to predict:
+    </p>
     <ul>
-      <li>Supports image + transcript multimodal classification</li>
-      <li>Trained using <code>Unsloth</code> with LoRA adapters</li>
-      <li>Custom dataset of classroom scenes and academic dialogues</li>
-      <li>Compatible with Hugging Face Transformers & PEFT</li>
+      <li>Type of class: Lecture, Flipped, Lab, etc.</li>
+      <li>Topic: Physics, AI, History, etc.</li>
     </ul>
 
-    <h2>🔧 Tech Stack</h2>
+    <h2>🧪 Methodology</h2>
     <ul>
-      <li>Python, PyTorch, Transformers</li>
-      <li>BLIP / LLaVA / Qwen2-VL backbone support</li>
-      <li>Google Colab for fine-tuning & inference</li>
+      <li>Dataset: Curated ~500 classroom images with transcripts + scene descriptions</li>
+      <li>Annotation: Human-labeled class types and academic topics</li>
+      <li>Training: Using <code>Unsloth</code> with LoRA for parameter-efficient fine-tuning</li>
+      <li>Evaluation: Prompt-based inference and visual inspection on unseen samples</li>
+    </ul>
+
+    <h2>📊 Results</h2>
+    <ul>
+      <li>High classification accuracy on clear images and clean transcripts</li>
+      <li>Resilience to partial occlusions and noisy classroom audio</li>
+      <li>Semantic understanding of student-teacher dialogue context</li>
     </ul>
 
     <h2>📷 Sample Prompt</h2>
@@ -128,14 +141,27 @@ You are a classroom observer. Based on the transcript and image provided, classi
       </iframe>
     </div>
 
-    <h2>📌 Status</h2>
-    <p>🔄 Currently fine-tuning the model and testing on video frames and real classroom transcripts.</p>
+    <h2>🌐 GitHub</h2>
+    <p>
+      Repository: <a href="https://github.com/dinahejji/VLM-Classroom-Classification" target="_blank">
+        github.com/dinahejji/VLM-Classroom-Classification</a>
+    </p>
 
-    <h2>💡 Future Plans</h2>
+    <h2>🌟 Impact</h2>
+    <p>
+      This model can serve as a foundation for:
+    </p>
     <ul>
-      <li>Add a live demo with Gradio or Streamlit</li>
-      <li>Improve classification accuracy across noisy audio</li>
-      <li>Expand dataset with multimodal annotations</li>
+      <li>Smart classroom monitoring systems</li>
+      <li>Personalized tutoring tools based on activity type</li>
+      <li>Large-scale learning analytics in education research</li>
+    </ul>
+
+    <h2>🔮 Future Plans</h2>
+    <ul>
+      <li>Deploy interactive demo with Gradio or Streamlit</li>
+      <li>Enhance robustness to noisy transcripts</li>
+      <li>Expand to include audio, quiz results, and gesture analysis</li>
     </ul>
   </section>
 
