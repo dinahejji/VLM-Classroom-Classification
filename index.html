@@ -3,55 +3,68 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="VLM Classroom Classification - A Vision-Language Model to classify classroom settings by type and topic." />
-  <title>VLM Classroom Classification</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet"/>
+  <meta name="description" content="Multimodal Classification of Classroom Scenes Using Vision-Language Models" />
+  <title>Multimodal Classification of Classroom Scenes Using VLMs</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet"/>
   <style>
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: 'Inter', sans-serif;
     }
     body {
-      background-color: #f9fafb;
+      background-color: #f9f9f9;
       color: #1f2937;
-      line-height: 1.6;
-      padding: 40px;
+      font-family: 'Inter', sans-serif;
+      line-height: 1.75;
+      padding: 40px 20px;
     }
     header {
       text-align: center;
-      margin-bottom: 40px;
+      margin-bottom: 50px;
     }
     header h1 {
-      font-size: 2.5rem;
-      margin-bottom: 10px;
-    }
-    header p {
-      font-size: 1.1rem;
-      color: #4b5563;
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      font-weight: 600;
+      color: #111827;
+      max-width: 900px;
+      margin: auto;
+      line-height: 1.4;
     }
     section {
-      max-width: 800px;
+      max-width: 900px;
       margin: auto;
-      padding: 20px;
+      padding: 30px;
       background-color: #ffffff;
       border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+    }
+    section p {
+      text-align: justify;
+      margin-bottom: 20px;
+      font-size: 1.05rem;
     }
     h2 {
-      margin-top: 30px;
+      margin-top: 40px;
       font-size: 1.5rem;
+      font-weight: 600;
       color: #111827;
+      border-bottom: 2px solid #e5e7eb;
+      padding-bottom: 5px;
     }
     ul {
-      margin-top: 10px;
+      margin-top: 15px;
       padding-left: 20px;
+    }
+    li {
+      margin-bottom: 8px;
     }
     pre {
       background-color: #f3f4f6;
-      padding: 10px;
+      padding: 15px;
       border-radius: 8px;
+      font-size: 0.95rem;
       overflow-x: auto;
     }
     a {
@@ -64,64 +77,57 @@
     iframe {
       border: none;
       border-radius: 10px;
+      margin-top: 15px;
     }
     footer {
       text-align: center;
-      margin-top: 40px;
+      margin-top: 60px;
       color: #9ca3af;
-    }
-    .sub {
-      color: #4b5563;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>VLM Classroom Classification</h1>
-    <p>Vision-Language Model for Classroom Type and Topic Prediction</p>
+    <h1>Multimodal Classification of Classroom Scenes Using Vision-Language Models</h1>
   </header>
 
   <section>
-    <h2>📌 What is the project?</h2>
     <p>
-      VLM Classroom Classification is a multimodal AI system that uses a fine-tuned Vision-Language Model (VLM)
-      to classify classroom activities by <strong>scene type</strong> and <strong>academic topic</strong> based on both
-      images and transcripts from real teaching environments.
+      This work presents a system that classifies classroom scenes based on both visual and textual data using fine-tuned Vision-Language Models (VLMs). It identifies the type of classroom activity—such as lectures, labs, or active learning sessions—as well as the academic topic being discussed.
+    </p>
+    <p>
+      Manual annotation of educational environments is time-consuming and subjective, while traditional classification models struggle to capture the complex, multimodal nature of real classroom interactions. An automated approach can support large-scale educational analytics and adaptive learning systems.
+    </p>
+    <p>
+      A VLM is intended to be fine-tuned using a custom dataset of annotated classroom images paired with transcripts of student-teacher dialogue. The model jointly processes visual cues and spoken content to infer both pedagogical style and subject matter.
+    </p>
+    <p>
+      The system demonstrates the potential of multimodal AI in understanding complex human-centered settings like education.
     </p>
 
-    <h2>❓ Why does it matter?</h2>
+    <h2>Repository</h2>
     <p>
-      Understanding the type of classroom interaction (e.g., lecture, flipped, lab) and the subject being taught
-      is crucial for educational analytics, personalized learning tools, and intelligent tutoring systems.
+      GitHub: <a href="https://github.com/dinahejji/VLM-Classroom-Classification" target="_blank">
+        github.com/dinahejji/VLM-Classroom-Classification</a>
     </p>
 
-    <h2>⚙️ How does it work?</h2>
-    <p>
-      A VLM (e.g., Qwen2-VL, LLaVA, or BLIP) is fine-tuned on a dataset of annotated classroom images and aligned
-      transcripts. Given a new sample, the model processes visual and textual inputs to predict:
-    </p>
+    <h2>Features</h2>
     <ul>
-      <li>Type of class: Lecture, Flipped, Lab, etc.</li>
-      <li>Topic: Physics, AI, History, etc.</li>
+      <li>Supports image + transcript multimodal classification</li>
+      <li>Trained using <code>Unsloth</code> with LoRA adapters</li>
+      <li>Custom dataset of classroom scenes and academic dialogues</li>
+      <li>Compatible with Hugging Face Transformers & PEFT</li>
     </ul>
 
-    <h2>🧪 Methodology</h2>
+    <h2>Tech Stack</h2>
     <ul>
-      <li>Dataset: Curated ~500 classroom images with transcripts + scene descriptions</li>
-      <li>Annotation: Human-labeled class types and academic topics</li>
-      <li>Training: Using <code>Unsloth</code> with LoRA for parameter-efficient fine-tuning</li>
-      <li>Evaluation: Prompt-based inference and visual inspection on unseen samples</li>
+      <li>Python, PyTorch, Transformers</li>
+      <li>BLIP / LLaVA / Qwen2-VL backbone support</li>
+      <li>Google Colab for fine-tuning & inference</li>
     </ul>
 
-    <h2>📊 Results</h2>
-    <ul>
-      <li>High classification accuracy on clear images and clean transcripts</li>
-      <li>Resilience to partial occlusions and noisy classroom audio</li>
-      <li>Semantic understanding of student-teacher dialogue context</li>
-    </ul>
-
-    <h2>📷 Sample Prompt</h2>
+    <h2>Sample Prompt</h2>
     <pre>
 ### Instruction:
 You are a classroom observer. Based on the transcript and image provided, classify:
@@ -132,36 +138,21 @@ You are a classroom observer. Based on the transcript and image provided, classi
 "Okay, so what does this graph represent? It's the velocity-time graph for motion..."
     </pre>
 
-    <h2>🎬 Demo</h2>
+    <h2>Demo</h2>
     <p>Watch a demo of the VLM classifying a real classroom scene using a video + transcript input:</p>
-    <div style="margin-top: 20px; text-align: center;">
-      <iframe 
-        src="https://drive.google.com/file/d/1vUNNUKvRxaSNCshPV-9TzRX2sJe5ePjV/preview" 
-        width="100%" height="400" allow="autoplay" allowfullscreen>
-      </iframe>
-    </div>
+    <iframe 
+      src="https://drive.google.com/file/d/1vUNNUKvRxaSNCshPV-9TzRX2sJe5ePjV/preview" 
+      width="100%" height="400" allow="autoplay" allowfullscreen>
+    </iframe>
 
-    <h2>🌐 GitHub</h2>
-    <p>
-      Repository: <a href="https://github.com/dinahejji/VLM-Classroom-Classification" target="_blank">
-        github.com/dinahejji/VLM-Classroom-Classification</a>
-    </p>
+    <h2>Status</h2>
+    <p>🔄 Currently fine-tuning the model and testing on video frames and real classroom transcripts.</p>
 
-    <h2>🌟 Impact</h2>
-    <p>
-      This model can serve as a foundation for:
-    </p>
+    <h2>Future Plans</h2>
     <ul>
-      <li>Smart classroom monitoring systems</li>
-      <li>Personalized tutoring tools based on activity type</li>
-      <li>Large-scale learning analytics in education research</li>
-    </ul>
-
-    <h2>🔮 Future Plans</h2>
-    <ul>
-      <li>Deploy interactive demo with Gradio or Streamlit</li>
-      <li>Enhance robustness to noisy transcripts</li>
-      <li>Expand to include audio, quiz results, and gesture analysis</li>
+      <li>Add a live demo with Gradio or Streamlit</li>
+      <li>Improve classification accuracy across noisy audio</li>
+      <li>Expand dataset with multimodal annotations</li>
     </ul>
   </section>
 
