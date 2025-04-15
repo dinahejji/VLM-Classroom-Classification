@@ -79,6 +79,12 @@
       border-radius: 10px;
       margin-top: 15px;
     }
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin-top: 20px;
+    }
     footer {
       text-align: center;
       margin-top: 60px;
@@ -93,7 +99,7 @@
   </header>
 
   <section>
-        <h2>Project Overview</h2>
+    <h2>Project Overview</h2>
     <p>
       This work presents a system that classifies classroom scenes based on both visual and textual data using fine-tuned Vision-Language Models (VLMs). It identifies the type of classroom activity—such as lectures, labs, or active learning sessions—as well as the academic topic being discussed.
     </p>
@@ -113,15 +119,21 @@
         github.com/dinahejji/VLM-Classroom-Classification</a>
     </p>
 
-    <h2>Features</h2>
+    <h2>Methodology</h2>
+    <p>
+      The system architecture integrates multiple AI components: a fine-tuned Vision-Language Model (VLM) for classroom scene understanding, an LSTM for analyzing student behavior, and a Large Language Model (LLM) to generate human-robot interaction suggestions based on a fused multimodal understanding.
+    </p>
+    <img src="https://drive.google.com/uc?id=15oDqqfjhzt4qyOKyqTy9O5HfDaqh0xzF" alt="System Architecture Diagram">
+
+    <h2>Results</h2>
     <ul>
-      <li>Supports image + transcript multimodal classification</li>
-      <li>Trained using <code>Unsloth</code> with LoRA adapters</li>
-      <li>Custom dataset of classroom scenes and academic dialogues</li>
+      <li>Human Robot Interaction Suggestions by LLMs based on Multi-Fusion Scene Understanding</li>
+      <li>LSTM for behavior detection from time-series visual patterns</li>
+      <li>Fine-tuned multimodal VLM for scene understanding using image + classroom audio transcript</li>
     </ul>
 
-<h2>Sample Prompt</h2>
-<pre>
+    <h2>Sample Prompt</h2>
+    <pre>
 ### Instruction:
 You are a classroom observer. Based on the image and the following transcript (automatically generated from classroom audio), classify:
 1. The type of classroom activity (e.g., normal lecture, flipped classroom, lab session, exam, etc.)
@@ -129,19 +141,22 @@ You are a classroom observer. Based on the image and the following transcript (a
 
 ### Transcript (converted from audio):
 "Okay, so what does this graph represent? It's the velocity-time graph for motion..."
-</pre>
+    </pre>
 
-
-<h2>Demo</h2>
-<p>Watch a demo of the VLM classifying a real classroom scene using a video + transcript input:</p>
-<iframe 
-  src="https://drive.google.com/file/d/15v6Qtk3fpl6NTehXVIv1Irh9Z_doII7f/preview" 
-  width="100%" height="400" allow="autoplay" allowfullscreen>
-</iframe>
+    <h2>Demo</h2>
+    <p>Watch a demo of the VLM classifying a real classroom scene using a video + transcript input:</p>
+    <iframe 
+      src="https://drive.google.com/file/d/1jTh8a13Kq8JxVrTm-94Kt0l0ZeTDwYmw/preview" 
+      width="100%" height="400" allow="autoplay" allowfullscreen>
+    </iframe>
 
     <h2>Status</h2>
-    <p>🔄 Currently fine-tuning the model and testing on video frames and real classroom transcripts.</p>
-
+    <ul>
+      <li>✅ Created a dataset of classroom scenes labeled with class types: hybrid, normal, active, flipped, lab, and exam</li>
+      <li>✅ Fine-tuned <code>LLaMA-3.2-11B-Vision-Instruct</code> to extract class type and current topic from image + transcript</li>
+      <li>✅ Trained an LSTM model for student behavior detection with 90% accuracy on a labeled dataset</li>
+      <li>🔄 Currently working on the multimodal fusion module and LLM-based prompt/action generation</li>
+    </ul>
   </section>
 
   <footer>
