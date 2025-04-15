@@ -99,19 +99,17 @@
   </header>
 
   <section>
-    <h2>Project Overview</h2>
-    <p>
-      This work presents a system that classifies classroom scenes based on both visual and textual data using fine-tuned Vision-Language Models (VLMs). It identifies the type of classroom activity—such as lectures, labs, or active learning sessions—as well as the academic topic being discussed.
-    </p>
-    <p>
-      Manual annotation of educational environments is time-consuming and subjective, while traditional classification models struggle to capture the complex, multimodal nature of real classroom interactions. An automated approach can support large-scale educational analytics and adaptive learning systems.
-    </p>
-    <p>
-      A VLM is intended to be fine-tuned using a custom dataset of annotated classroom images paired with transcripts of student-teacher dialogue. The model jointly processes visual cues and spoken content to infer both pedagogical style and subject matter.
-    </p>
-    <p>
-      The system demonstrates the potential of multimodal AI in understanding complex human-centered settings like education.
-    </p>
+<h2>Project Overview</h2>
+<p>
+  This project presents a multimodal AI system that understands classroom scenes by combining visual and auditory information. Using a fine-tuned Vision-Language Model (VLM), the system classifies the type of classroom activity—such as normal lecture, flipped learning, lab session, or exam—and identifies the ongoing academic topic based on classroom images and audio transcripts.
+</p>
+<p>
+  To enhance the system's interpretability, an LSTM-based behavior analysis module detects student engagement patterns from visual sequences, adding a behavioral dimension to scene understanding. These outputs are then fused into a unified representation and passed to a Large Language Model (LLM), which generates autonomous human-robot interaction suggestions tailored to the classroom context.
+</p>
+<p>
+  This end-to-end pipeline enables scalable, context-aware observation of real-world educational environments and supports intelligent classroom agents capable of proactive, multimodal assistance.
+</p>
+
 
     <h2>Repository</h2>
     <p>
