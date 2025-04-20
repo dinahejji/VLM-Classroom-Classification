@@ -135,13 +135,13 @@
  <img src="https://raw.githubusercontent.com/dinahejji/VLM-Classroom-Classification/main/arch.png" alt="System Architecture Diagram">
 
 
-    <h2>Results</h2>
-    <ul>
-      <li>Keypoints-based pose estimation used to train LSTM for student behavior recognition</li>
-      <li>LSTM for behavior detection from time-series visual patterns</li>
-      <li>Fine-tuned multimodal VLM for scene understanding using image + classroom audio transcript</li>
-      <li>Human Robot Interaction Suggestions by LLMs based on Multi-Fusion Scene Understanding from the outputs of both VLM and LSTM</li>
-    </ul>
+<h2 id="results">Results</h2>
+<ul>
+  <li>🎯 Pose-based keypoints extracted from classroom video frames using Detectron2</li>
+  <li>📈 LSTM trained on time-series keypoints achieved 90% accuracy for student behavior classification</li>
+  <li>🧠 VLM fine-tuned to classify class type and topic from image + transcript input</li>
+  <li>🤖 LLM generated robot interaction suggestions based on fused VLM + LSTM outputs</li>
+</ul>
 
 
 
@@ -168,7 +168,7 @@ Please generate:
 
 
     <h2>Demo</h2>
-    <p>Watch a demo of the VLM classifying a real classroom scene using a video + transcript input:</p>
+    <p>Below is a live demo showcasing the full pipeline: from classroom scene classification to intelligent robot suggestions.</p>
     <iframe 
       src="https://drive.google.com/file/d/13kfb5S9BogH2ae0E-fVQ4IFG_g0hMpKx/preview" 
       width="100%" height="400" allow="autoplay" allowfullscreen>
