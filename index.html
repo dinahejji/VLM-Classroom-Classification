@@ -101,10 +101,13 @@
   <section>
 <h2>Project Overview</h2>
 <p>
-  This project presents a multimodal AI system that understands classroom scenes by combining visual and auditory information. Using a fine-tuned Vision-Language Model (VLM), the system classifies the type of classroom activity—such as normal lecture, flipped learning, lab session, or exam—and identifies the ongoing academic topic based on classroom images and audio transcripts.
+  This project introduces a multimodal AI system designed to understand and respond to real classroom scenes by combining vision, language, and behavioral cues. At its core, a fine-tuned Vision-Language Model (VLM) analyzes classroom images and transcripts to classify the type of activity—such as normal lecture, flipped learning, lab session, or exam—and to detect the academic topic being discussed.
 </p>
 <p>
-  To enhance the system's interpretability, an LSTM-based behavior analysis module detects student engagement patterns from visual sequences, adding a behavioral dimension to scene understanding. These outputs are then fused into a unified representation and passed to a Large Language Model (LLM), which generates autonomous human-robot interaction suggestions tailored to the classroom context.
+  In parallel, a behavior recognition module based on LSTM processes keypoints extracted from pose estimation to track student engagement over time. This allows the system to identify behaviors like writing, using a mobile phone, or disengagement.
+</p>
+<p>
+  Both the VLM's scene understanding and the LSTM's behavioral insights are fused into a unified prompt sent to a Large Language Model (LLM), which then generates intelligent, context-aware robot actions. The result is a fully integrated pipeline for classroom observation and autonomous human-robot interaction.
 </p>
 <p>
   This end-to-end pipeline enables scalable, context-aware observation of real-world educational environments and supports intelligent classroom agents capable of proactive, multimodal assistance.
@@ -112,46 +115,73 @@
 
 
 
-    <h2>Methodology</h2>
-    <p>
-      The system architecture integrates multiple AI components: a fine-tuned Vision-Language Model (VLM) for classroom scene understanding, an LSTM for analyzing student behavior, and a Large Language Model (LLM) to generate human-robot interaction suggestions based on a fused multimodal understanding.
-    </p>
+<h2>Methodology</h2>
+<p>
+  The system follows a modular, multimodal pipeline composed of three main AI components:
+</p>
+
+<ul>
+  <li><strong>1. Vision-Language Model (VLM):</strong> A fine-tuned model that classifies the classroom activity type (e.g., flipped, lab, exam) and infers the academic topic by analyzing both the classroom image and its associated audio transcript.</li>
+
+  <li><strong>2. Behavior Analysis using LSTM:</strong> Pose estimation is applied to classroom videos to extract keypoints for each student. These time-series keypoint sequences are passed to a trained LSTM model to detect engagement-related behaviors such as writing, reading, phone usage, or inattention.</li>
+
+  <li><strong>3. Robot Action Generation via LLM:</strong> Outputs from the VLM and LSTM are fused into a structured prompt. This prompt is sent to a Large Language Model (LLM), which generates an adaptive response—providing a scene summary and suggesting robot actions tailored to specific student behaviors.</li>
+</ul>
+
+<p>
+  This architecture allows the system to not only classify scenes but to interpret them meaningfully and act upon them, enabling intelligent, context-aware robot interaction in real educational settings.
+</p>
 
  <img src="https://raw.githubusercontent.com/dinahejji/VLM-Classroom-Classification/main/arch.png" alt="System Architecture Diagram">
 
 
     <h2>Results</h2>
     <ul>
-      <li>Human Robot Interaction Suggestions by LLMs based on Multi-Fusion Scene Understanding</li>
+      <li>Keypoints-based pose estimation used to train LSTM for student behavior recognition</li>
       <li>LSTM for behavior detection from time-series visual patterns</li>
       <li>Fine-tuned multimodal VLM for scene understanding using image + classroom audio transcript</li>
+      <li>Human Robot Interaction Suggestions by LLMs based on Multi-Fusion Scene Understanding from the outputs of both VLM and LSTM</li>
     </ul>
 
-    <h2>Sample Prompt</h2>
-    <pre>
-### Instruction:
-You are a classroom observer. Based on the image and the following transcript (automatically generated from classroom audio), classify:
-1. The type of classroom activity (e.g., normal lecture, flipped classroom, lab session, exam, etc.)
-2. The academic topic being discussed.
 
-### Transcript (converted from audio):
-"Okay, so what does this graph represent? It's the velocity-time graph for motion..."
-    </pre>
+
+<h2>Sample LLM Prompt for Robot Interaction</h2>
+<p>
+  The following prompt is sent to a Large Language Model (LLM) to generate intelligent robot actions based on fused outputs from both the Vision-Language Model (VLM) and LSTM-based behavior analysis:
+</p>
+<pre>
+You are an intelligent classroom support robot.
+
+🧠 VLM Scene Understanding:
+- Type: Flipped Classroom
+- Topic: Kinematics and Velocity-Time Graphs
+
+🎯 LSTM Student Behaviors:
+- Student 1: Writing_On_Textbook
+- Student 2: Not Looking at Board
+- Student 3: Holding_Mobile_Phone
+
+Please generate:
+- A brief scene summary
+- Targeted robot intervention actions per student
+</pre>
+
 
     <h2>Demo</h2>
     <p>Watch a demo of the VLM classifying a real classroom scene using a video + transcript input:</p>
     <iframe 
-      src="https://drive.google.com/file/d/1jTh8a13Kq8JxVrTm-94Kt0l0ZeTDwYmw/preview" 
+      src="https://drive.google.com/file/d/13kfb5S9BogH2ae0E-fVQ4IFG_g0hMpKx/preview" 
       width="100%" height="400" allow="autoplay" allowfullscreen>
     </iframe>
 
-    <h2>Status</h2>
-    <ul>
-      <li>✅ Created a dataset of classroom scenes labeled with class types: hybrid, normal, active, flipped, lab, and exam</li>
-      <li>✅ Fine-tuned <code>LLaMA-3.2-11B-Vision-Instruct</code> to extract class type and current topic from image + transcript</li>
-      <li>✅ Trained an LSTM model for student behavior detection with 90% accuracy on a labeled dataset</li>
-      <li>🔄 Currently working on the multimodal fusion module and LLM-based prompt/action generation</li>
-    </ul>
+<h2>Status</h2>
+<ul>
+  <li>✅ Built a labeled dataset of classroom scenes with class types: <em>hybrid</em>, <em>normal</em>, <em>active</em>, <em>flipped</em>, <em>lab</em>, and <em>exam</em></li>
+  <li>✅ Fine-tuned <code>LLaMA-3.2-11B-Vision-Instruct</code> to classify classroom activity and detect the current academic topic from images and transcripts</li>
+  <li>✅ Used Detectron2 for pose estimation and trained an LSTM model for student behavior recognition with 90% accuracy on the EduNet dataset</li>
+  <li>🔄 Currently integrating VLM and LSTM outputs into a unified prompt for LLM-based robot action generation</li>
+</ul>
+
   </section>
 
   <footer>
