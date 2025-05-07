@@ -142,7 +142,6 @@ gent classroom agents capable of proactive, context-aware assistance.</p>
 
  <img src="https://raw.githubusercontent.com/dinahejji/VLM-Classroom-Classification/main/arch.png" alt="System Architecture Diagram">
 
-
 <h2 id="results">Results</h2>
 <ul>
   <li> Pose-based keypoints extracted from classroom video frames using Detectron2</li>
@@ -153,25 +152,88 @@ gent classroom agents capable of proactive, context-aware assistance.</p>
 
 
 
-<h2>Sample LLM Prompt for Robot Interaction</h2>
+    <h2>Prompt Formats</h2>
 <p>
-  The following prompt is sent to a Large Language Model (LLM) to generate intelligent robot actions based on fused outputs from both the Vision-Language Model (VLM) and LSTM-based behavior analysis:
+  The prompts used for fine-tuning the Vision-Language Model (VLM) and guiding the Large Language Model (LLM) are structured to ensure clarity, consistency, and context-awareness.
+</p>
+
+<h3>VLM Fine-tuning Prompt (LLaVA, LLaMA, Qwen)</h3>
+<p>
+  The VLM receives a prompt that includes a classroom scene image and an accompanying transcript. This prompt is structured in JSON format to simulate instruction-tuned dialogue data.
 </p>
 <pre>
-You are an intelligent classroom support robot.
+{
+  "messages": [
+    {
+      "role": "user", 
+      "content": [
+        {
+          "type": "text", 
+          "text": "&lt;instruction with transcript&gt;"
+        },
+        {
+          "type": "image", 
+          "image": "&lt;image_path&gt;"
+        }
+      ]
+    },
+    {
+      "role": "assistant",
+      "content": [
+        {
+          "type": "text",
+          "text": "### Image Description: ...\n### Class: ...\n### Topic: ..."
+        }
+      ]
+    }
+  ]
+}
+</pre>
 
-VLM Scene Understanding:
-- Type: Flipped Classroom
-- Topic: Kinematics and Velocity-Time Graphs
+<h3>LLM Prompt Format for Robot Action Generation</h3>
+<p>
+  To ensure meaningful and context-appropriate robotic responses, the LLM is guided using a structured prompt that follows the CISCO pattern: <strong>Context, Intent, Situation, Constraint, Output</strong>.
+</p>
+<pre>
+You are an intelligent classroom support robot tasked
+with monitoring student behavior and classroom dynamics. 
+Your role is to observe all students collectively and
+take one appropriate action only when necessary.
 
-  LSTM Student Behaviors:
-- Student 1: Writing_On_Textbook
-- Student 2: Not Looking at Board
-- Student 3: Holding_Mobile_Phone
+You must analyze the behavior of all students provided 
+in the input and consider the class type (e.g., Lecture,
+Group Work, Exam, etc.).
 
-Please generate:
-- A brief scene summary
-- Targeted robot intervention actions per student
+Based on this full-context understanding, you should 
+suggest one action only from the following list that
+best supports the learning environment:
+Encourage Focus, Support with Topic, No Action Needed,
+Ask a Follow-up Question, Suggest Collaboration,
+Offer Encouragement, Invite Participation, Clarify
+Misunderstanding, Remind of Task or Goal, Warning.
+
+Choose your action carefully and intervene only if the 
+situation requires support or redirection. Otherwise,
+remain passive.
+
+Scene Understanding:
+&lt;vlm_output&gt;
+
+Student Behavior:
+&lt;lstm_output&gt;
+
+Class Type:
+&lt;class_type&gt;
+
+Topic (if applicable):
+&lt;topic&gt;
+
+Please respond in the format below:
+
+Summary: &lt;1-2 lines summarizing the scene and student 
+behavior&gt;
+Action Type: &lt;Choose exactly one from the list above&gt;
+Robot Action: &lt;1-2 line helpful suggestion&gt;
 </pre>
 
 
