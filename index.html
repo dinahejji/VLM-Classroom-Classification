@@ -129,9 +129,9 @@ gent classroom agents capable of proactive, context-aware assistance.</p>
 </p>
 
 <ul>
-  <li><strong>1. Vision-Language Model (VLM):</strong> A fine-tuned model that classifies the classroom activity type (e.g., flipped, lab, exam) and infers the academic topic by analyzing both the classroom image and its associated audio transcript.</li>
+  <li><strong>1. Vision-Language Model (VLM):</strong> A fine-tuned model that classifies the classroom activity type (e.g., flipped classroom, lab lecture, exam,active learning lecture, normal lecture, hybrid lecture) and infers the academic topic by analyzing both the classroom image and its associated audio transcript.</li>
 
-  <li><strong>2. Behavior Analysis using LSTM:</strong> Pose estimation is applied to classroom videos to extract keypoints for each student. These time-series keypoint sequences are passed to a trained LSTM model to detect engagement-related behaviors such as writing, reading, phone usage, or inattention.</li>
+  <li><strong>2. Behavior Analysis using LSTM:</strong> Pose estimation using Detectron2 is applied to classroom videos to extract keypoints for each student. These time-series keypoint sequences are passed to a trained LSTM model to detect engagement-related behaviors such as writing on textbook, writing on board, reading, holding a book, holding mobile phone, sitting on desk.</li>
 
   <li><strong>3. Robot Action Generation via LLM:</strong> Outputs from the VLM and LSTM are fused into a structured prompt. This prompt is sent to a Large Language Model (LLM), which generates an adaptive response—providing a scene summary and suggesting robot actions tailored to specific student behaviors.</li>
 </ul>
