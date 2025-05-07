@@ -144,10 +144,13 @@ gent classroom agents capable of proactive, context-aware assistance.</p>
 
 <h2 id="results">Results</h2>
 <ul>
-  <li> Pose-based keypoints extracted from classroom video frames using Detectron2</li>
-  <li> LSTM trained on time-series keypoints achieved 90% accuracy for student behavior classification</li>
-  <li> VLM fine-tuned to classify class type and topic from image + transcript input</li>
-  <li> LLM generated robot interaction suggestions based on fused VLM + LSTM outputs</li>
+  <li><strong>Pose Estimation + LSTM:</strong> Student behavior classification on EduNet-v1 dataset achieved <strong>92.23%</strong> accuracy using Detectron2 keypoints and a trained LSTM model.</li>
+
+  <li><strong>Vision-Language Models (VLM):</strong> Fine-tuned <code>Qwen2.5-7B</code> model achieved <strong>93.52%</strong> accuracy for topic classification and <strong>76.01%</strong> for classroom type classification on a custom 625-sample multimodal dataset.</li>
+
+  <li><strong>LLM Action Validity:</strong> The Large Language Model (LLM) generated robot actions with <strong>95%</strong> rule-based DAG validity and <strong>86%</strong> G-Eval appropriateness score across all test scenarios.</li>
+
+  <li><strong>LLMs on Behavior Classification:</strong> General-purpose LLMs performed poorly on behavior recognition: GPT o4-mini scored <strong>25.19%</strong>, and DeepSeek R1 scored <strong>23.41%</strong>, reinforcing the importance of the dedicated LSTM model.</li>
 </ul>
 
 
@@ -243,14 +246,6 @@ Robot Action: &lt;1-2 line helpful suggestion&gt;
       src="https://drive.google.com/file/d/13kfb5S9BogH2ae0E-fVQ4IFG_g0hMpKx/preview" 
       width="100%" height="400" allow="autoplay" allowfullscreen>
     </iframe>
-
-<h2>Status</h2>
-<ul>
-  <li>Built a labeled dataset of classroom scenes with class types: <em>hybrid</em>, <em>normal</em>, <em>active</em>, <em>flipped</em>, <em>lab</em>, and <em>exam</em></li>
-  <li>Fine-tuned <code>LLaMA-3.2-11B-Vision-Instruct</code> to classify classroom activity and detect the current academic topic from images and transcripts</li>
-  <li>Used Detectron2 for pose estimation and trained an LSTM model for student behavior recognition with 90% accuracy on the EduNet dataset</li>
-  <li>Currently integrating VLM and LSTM outputs into a unified prompt for LLM-based robot action generation</li>
-</ul>
 
   </section>
 
